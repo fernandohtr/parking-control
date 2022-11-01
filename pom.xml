@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.api</groupId>
-	<artifactId>parkgin-control</artifactId>
+	<artifactId>parking-control</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>parkgin-control</name>
+	<name>parking-control</name>
 	<description>Simple parking control api</description>
 	<properties>
 		<java.version>17</java.version>

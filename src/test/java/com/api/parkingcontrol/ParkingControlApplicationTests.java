@@ -1,10 +1,10 @@
-package com.api.parkgincontrol;
+package com.api.parkingcontrol;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ParkginControlApplicationTests {
+class ParkingControlApplicationTests {
 
 	@Test
 	void contextLoads() {
