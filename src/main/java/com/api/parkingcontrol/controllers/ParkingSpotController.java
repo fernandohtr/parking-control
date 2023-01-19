@@ -75,7 +75,7 @@ public class ParkingSpotController {
     public ResponseEntity<Object> deleteParkingSpot(@PathVariable(value = "id") UUID id) {
         Optional<ParkingSpotModel> parkingSpotModelOptional = parkingSpotService.findById(id);
 
-        if (!parkingSpotModelOptional.isPresent()) {
+        if (parkingSpotModelOptional.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Parking Spot not found.");
         }
         parkingSpotService.delete(parkingSpotModelOptional.get());
@@ -87,7 +87,7 @@ public class ParkingSpotController {
                                                     @RequestBody @Valid ParkingSpotDto parkingSpotDto) {
         Optional<ParkingSpotModel> parkingSpotModelOptional = parkingSpotService.findById((id));
 
-        if ((!parkingSpotModelOptional.isPresent())) {
+        if ((parkingSpotModelOptional.isEmpty())) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Parking Spot not found.");
         }
         var parkingSpotModel = new ParkingSpotModel();
