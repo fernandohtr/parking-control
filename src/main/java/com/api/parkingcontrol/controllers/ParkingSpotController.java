@@ -8,6 +8,7 @@ import java.util.UUID;
 import javax.validation.Valid;
 
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -32,12 +33,9 @@ import com.api.parkingcontrol.services.ParkingSpotService;
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/parking-spot")
 public class ParkingSpotController {
-    
-    final ParkingSpotService parkingSpotService;
 
-    public ParkingSpotController(ParkingSpotService parkingSpotService) {
-        this.parkingSpotService = parkingSpotService;
-    }
+    @Autowired
+    private ParkingSpotService parkingSpotService;
 
     @PostMapping
     public ResponseEntity<Object> saveParkingSpot(@RequestBody @Valid ParkingSpotDto parkingSpotDto) {
