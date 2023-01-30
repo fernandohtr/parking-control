@@ -10,6 +10,7 @@ import javax.validation.Valid;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -39,6 +40,15 @@ public class ParkingSpotController {
     @Qualifier("parkingSpotServiceImplement")
     private ParkingSpotService parkingSpotService;
 
+    @Value("${app.name}")
+    private String appName;
+
+    @Value("${app.port}")
+    private String appPort;
+
+    @Value("${app.host}")
+    private String appHost;
+
     @PostMapping
     public ResponseEntity<Object> saveParkingSpot(@RequestBody @Valid ParkingSpotDto parkingSpotDto) {
         if (parkingSpotService.existsByLicensePlateCar(parkingSpotDto.getLicensePlateCar())) {
@@ -58,6 +68,9 @@ public class ParkingSpotController {
 
     @GetMapping
     public ResponseEntity<Page<ParkingSpotModel>> getAllParkingSpots(@PageableDefault(page = 0, size = 10, sort = "id", direction = Sort.Direction.ASC) Pageable pageable) {
+        System.out.println("appName: " + appName);
+        System.out.println("appPort: " + appPort);
+        System.out.println("appHost: " + appHost);
         return ResponseEntity.status(HttpStatus.OK).body(parkingSpotService.findAll(pageable));
     }
 
