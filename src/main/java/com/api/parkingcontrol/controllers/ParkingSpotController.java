@@ -7,6 +7,7 @@ import java.util.UUID;
 
 import javax.validation.Valid;
 
+import com.api.parkingcontrol.MyBean;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -40,6 +41,9 @@ public class ParkingSpotController {
     @Qualifier("parkingSpotServiceImplement")
     private ParkingSpotService parkingSpotService;
 
+    @Autowired
+    private MyBean myBean;
+
     @Value("${app.name}")
     private String appName;
 
@@ -71,6 +75,7 @@ public class ParkingSpotController {
         System.out.println("appName: " + appName);
         System.out.println("appPort: " + appPort);
         System.out.println("appHost: " + appHost);
+        myBean.method();
         return ResponseEntity.status(HttpStatus.OK).body(parkingSpotService.findAll(pageable));
     }
 
