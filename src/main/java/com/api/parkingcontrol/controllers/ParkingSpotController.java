@@ -7,6 +7,7 @@ import java.util.UUID;
 
 import javax.validation.Valid;
 
+import com.api.parkingcontrol.LazyBean;
 import com.api.parkingcontrol.MyBean;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,9 @@ public class ParkingSpotController {
 
     @Autowired
     private MyBean myBean;
+
+    @Autowired
+    private LazyBean lazyBean;
 
     @Value("${app.name}")
     private String appName;
