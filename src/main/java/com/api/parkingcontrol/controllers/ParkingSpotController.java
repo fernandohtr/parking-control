@@ -13,6 +13,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Scope;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -36,6 +37,8 @@ import com.api.parkingcontrol.services.ParkingSpotService;
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/parking-spot")
+//@Scope("singleton")
+@Scope("prototype")
 public class ParkingSpotController {
 
     @Autowired
@@ -56,6 +59,10 @@ public class ParkingSpotController {
 
     @Value("${app.host}")
     private String appHost;
+
+    public ParkingSpotController() {
+        System.out.println("ParkingSpotController: " + this);
+    }
 
     @PostMapping
     public ResponseEntity<Object> saveParkingSpot(@RequestBody @Valid ParkingSpotDto parkingSpotDto) {
