@@ -7,6 +7,7 @@ import java.util.UUID;
 
 import javax.validation.Valid;
 
+import com.api.parkingcontrol.AppProperties;
 import com.api.parkingcontrol.LazyBean;
 import com.api.parkingcontrol.MyBean;
 import org.springframework.beans.BeanUtils;
@@ -52,6 +53,9 @@ public class ParkingSpotController {
     @Autowired
     private LazyBean lazyBean;
 
+    @Autowired
+    private AppProperties appProperties;
+
     @Value("${app.name}")
     private String appName;
 
@@ -87,9 +91,12 @@ public class ParkingSpotController {
 
     @GetMapping
     public ResponseEntity<Page<ParkingSpotModel>> getAllParkingSpots(@PageableDefault(page = 0, size = 10, sort = "id", direction = Sort.Direction.ASC) Pageable pageable) {
-        System.out.println("appName: " + appName);
-        System.out.println("appPort: " + appPort);
-        System.out.println("appHost: " + appHost);
+//        System.out.println("appName: " + appName);
+//        System.out.println("appPort: " + appPort);
+//        System.out.println("appHost: " + appHost);
+        System.out.println("AppProperties Name: " + appProperties.getName());
+        System.out.println("AppProperties Port: " + appProperties.getPort());
+        System.out.println("AppProperties Host: " + appProperties.getHost());
         myBean.method();
         return ResponseEntity.status(HttpStatus.OK).body(parkingSpotService.findAll(pageable));
     }
