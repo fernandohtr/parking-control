@@ -11,8 +11,8 @@ import com.api.parkingcontrol.LazyBean;
 import com.api.parkingcontrol.MyBean;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.Scope;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -39,6 +39,7 @@ import com.api.parkingcontrol.services.ParkingSpotService;
 @RequestMapping("/parking-spot")
 //@Scope("singleton")
 @Scope("prototype")
+@PropertySource("classpath:custom.properties")
 public class ParkingSpotController {
 
     @Autowired
@@ -59,6 +60,9 @@ public class ParkingSpotController {
 
     @Value("${app.host}")
     private String appHost;
+
+    @Value("${message}")
+    private String message;
 
     public ParkingSpotController() {
         System.out.println("ParkingSpotController: " + this);
@@ -97,6 +101,7 @@ public class ParkingSpotController {
         if (!parkingSpotModelOptional.isPresent()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Parking Spot not found.");
         }
+        System.out.println("message: " + message);
         return ResponseEntity.status(HttpStatus.OK).body(parkingSpotModelOptional.get());
     }
 
