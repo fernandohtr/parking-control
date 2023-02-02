@@ -6,13 +6,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
-@Profile("dev")
+@Profile("prod")
 @Configuration
-public class BeanConfig {
+public class ProdBeanConfig {
 
     @Bean
-    public MyBean myBeanDevProfile() {
-        System.out.println("Profile DEV started");
+    public MyBean myBeanProdProfile() {
+        System.out.println("Profile PROD started");
         return new MyBean();
     }
 
