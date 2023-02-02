@@ -39,7 +39,7 @@ import com.api.parkingcontrol.services.ParkingSpotService;
 public class ParkingSpotController {
 
     @Autowired
-    @Qualifier("parkingSpotServiceImplement")
+//    @Qualifier("parkingSpotServiceImplement")
     private ParkingSpotService parkingSpotService;
 
     @Autowired

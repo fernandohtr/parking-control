@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 import com.api.parkingcontrol.services.ParkingSpotService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
+@Primary
 public class ParkingSpotServiceImplement implements ParkingSpotService {
 
     @Autowired
